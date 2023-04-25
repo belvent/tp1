@@ -21,7 +21,7 @@ public class Principal {
 
             Partido nuevo = new Partido(num, loc, golloc, visi, golvisi);
             listaPartidos.agregarPartido(nuevo);
-            //System.out.println(nuevo);
+            System.out.println(nuevo);
 
         }
 
@@ -33,7 +33,7 @@ public class Principal {
         Statement sta = conne.createStatement();
         ResultSet rse = sta.executeQuery("select *from pronostico");
 
-        System.out.println("Pronostico de la Primera Ronda del Apostador");
+        System.out.println("Pronóstico del Apostador en la Primera Ronda");
 
         Apuesta1 listaApuesta = new Apuesta1();
 
@@ -46,7 +46,7 @@ public class Principal {
 
             Partido nueApu = new Partido(num, loc, golloc, visi, golvisi);
             listaApuesta.agregarPronos(nueApu);
-            //System.out.println(nueApu);
+            System.out.println(nueApu);
         }
         rse.close();
         conne.close();
