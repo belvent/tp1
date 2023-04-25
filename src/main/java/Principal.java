@@ -51,25 +51,27 @@ public class Principal {
         rse.close();
         conne.close();
 
+        System.out.println();
+        System.out.println("Resultado del Apostador:");
+
         //System.out.println("Ingrese el partido a buscar:");
-      // int num = 1;
         int num= 1;
         Partido finalizado = listaPartidos.resulPartido(num);
-        System.out.println(finalizado);
         //if (finalizado == null){
           //  System.out.println("No se encontró");
         // else {
+        System.out.println(finalizado);
         //}
 
         //System.out.println("Ingrese por teclado el partido:");
         int nume = 1;
         Partido finalizada = listaApuesta.resulApuesta(nume);
 
-        if (finalizada == null){
-            System.out.println("No se encontró");
-        } else {
+        //if (finalizada == null){
+          //  System.out.println("No se encontró");
+       // } else {
             System.out.println(finalizada);
-        }
+       // }
 
        int puntosApos=0;
         if (finalizado.getGolesLoc() == finalizada.getGolesLoc() && finalizado.getGolesVis()== finalizada.getGolesVis()){
