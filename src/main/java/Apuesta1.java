@@ -1,5 +1,7 @@
-import java.util.HashMap;
+import lombok.Getter;
 
+import java.util.HashMap;
+@Getter
 public class Apuesta1 {
 
     private HashMap<Integer, Partido> pronostico;
@@ -14,7 +16,6 @@ public class Apuesta1 {
     public Partido resulApuesta(int nume) {
         return pronostico.get(nume);
     }
-
 
 
 }

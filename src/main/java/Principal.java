@@ -1,6 +1,12 @@
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+@Getter
 public class Principal {
     public static void main(String[] args) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:mysql://Localhost/Ronda", "root", "1977");
@@ -33,7 +39,7 @@ public class Principal {
         Statement sta = conne.createStatement();
         ResultSet rse = sta.executeQuery("select *from pronostico");
 
-        System.out.println("Pronóstico del Apostador en la Primera Ronda");
+       // System.out.println("Pronóstico del Apostador en la Primera Ronda");
 
         Apuesta1 listaApuesta = new Apuesta1();
 
@@ -46,38 +52,36 @@ public class Principal {
 
             Partido nueApu = new Partido(num, loc, golloc, visi, golvisi);
             listaApuesta.agregarPronos(nueApu);
-            System.out.println(nueApu);
+           // System.out.println(nueApu);
         }
         rse.close();
         conne.close();
 
         System.out.println();
-        System.out.println("Resultado del Apostador:");
+        System.out.println("Pronóstico del Apostador en la Primera Ronda:");
 
-        //System.out.println("Ingrese el partido a buscar:");
-        int num= 1;
-        Partido finalizado = listaPartidos.resulPartido(num);
-        //if (finalizado == null){
-          //  System.out.println("No se encontró");
-        // else {
-        System.out.println(finalizado);
-        //}
 
-        //System.out.println("Ingrese por teclado el partido:");
-        int nume = 1;
-        Partido finalizada = listaApuesta.resulApuesta(nume);
 
-        //if (finalizada == null){
-          //  System.out.println("No se encontró");
-       // } else {
-            System.out.println(finalizada);
-       // }
 
-       int puntosApos=0;
-        if (finalizado.getGolesLoc() == finalizada.getGolesLoc() && finalizado.getGolesVis()== finalizada.getGolesVis()){
+        int nume;
+        int puntosApos=0;
+        for (Partido a: listaApuesta.getPronostico().values()){
+          nume =a.getNumero();
+           Partido finalizada = listaApuesta.resulApuesta(nume);
+           Partido finalizado = listaPartidos.resulPartido(nume);
+           System.out.println(finalizada);
+            if (finalizado.getGolesLoc() == finalizada.getGolesLoc() && finalizado.getGolesVis()== finalizada.getGolesVis()){
             puntosApos++;
         }
-        System.out.println("PUNTAJE DEL APOSTADOR:    " + puntosApos);
+        }
+
+
+       System.out.println("PUNTAJE DEL APOSTADOR:    " + puntosApos);
     }
 
 }
+
+
+
+
+
